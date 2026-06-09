@@ -13,9 +13,19 @@ const NotificationCreateContext = () => {
   return (
     <div className="flex flex-col">
 
-        <button onClick={()=> notify("გამარჯობა")}
+        <button onClick={()=> notify("გამარჯობა", "success")}
         className="border-2 border-gray-900 w-fit h-fit rounded-sm px-4 py-2">
             add toast
+        </button>
+
+         <button onClick={()=> notify("გამარჯობა", "error")}
+        className="border-2 border-gray-900 w-fit h-fit rounded-sm px-4 py-2">
+            add error
+        </button>
+
+         <button onClick={()=> notify("გამარჯობა", "info")}
+        className="border-2 border-gray-900 w-fit h-fit rounded-sm px-4 py-2">
+            add info
         </button>
         
         <button onClick={()=>setToast([])}

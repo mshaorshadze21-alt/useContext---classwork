@@ -9,6 +9,7 @@ import { NotificationContext } from "./Context"
 // import LanguageChange from "./components/LanguageChange"
 import NotificationCreateContext from "./components/NotificationCreateContext"
 import Error from "./components/Error"
+import ToastCard from "./components/ToastCard"
 
 
 
@@ -18,11 +19,15 @@ function App() {
 
   // const [language, setLanguage] = useState("ka")
 
-  const [toast, setToast] = useState([])
+  const [toasts, setToasts] = useState([])
 
-   function notify(text){
+   function notify(text, type){
 
-        setToast([...toast, text])
+
+        const toast = { message: text, 
+                        type: type,
+                      }
+        setToasts([...toasts, toast ])
         console.log(toast)
 
     }
@@ -43,7 +48,7 @@ function App() {
 
       <div className="p-10 flex justify-between">
 
-      <NotificationContext.Provider value={{toast, setToast, notify}}>
+      <NotificationContext.Provider value={{toasts, setToasts, notify}}>
         
         <div>
           <NotificationCreateContext/>
@@ -53,7 +58,7 @@ function App() {
         
 
         <div className="flex flex-col gap-2 justify-start items-end">
-          {toast.map((i)=><div className="w-50 h-20 bg-amber-500 text-gray-900 rounded-lg flex items-center justify-center">{i}</div>)}
+          {toasts.map((i, index)=><ToastCard key={index} toast={i}/>)}
         </div>
         
         
